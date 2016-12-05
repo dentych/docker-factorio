@@ -11,8 +11,7 @@ RUN apk --update --no-cache add ca-certificates openssl \
 	&& wget https://www.factorio.com/get-download/0.14.21/headless/linux64 -O factorio.tar.gz \
 	&& tar -xvzf factorio.tar.gz -C /opt \
 	&& rm factorio.tar.gz \
-	&& apk del ca-certificates openssl \
-	&& apk clean all
+	&& apk del ca-certificates openssl
 
 WORKDIR /opt/factorio
 CMD /opt/factorio/bin/x64/factorio --start-server savegame
