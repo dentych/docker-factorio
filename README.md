@@ -6,11 +6,11 @@ Factorio docker image based on Alpine
 ```
 $ docker build -t dentych/factorio:0.14.21
 ```
-or run the `build.sh` script. The script takes one parameter, which is the factorio version used inside the image.
+or run the `build.sh` script.
 
 ## Running container
 ```
-$ docker run --name factorio -p 34197:34197 -v /srv/factorio/savegame:/opt/factorio/savegame dentych/factorio:0.14.21
+$ docker run --name factorio -p 34197:34197/udp -v /srv/factorio/savegame:/opt/factorio/savegame dentych/factorio:0.14.21
 ```
 or run the `run.sh` script. Takes one parameter, which is the host directory name of the savegame (OR a volume name).
 
