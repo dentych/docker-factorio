@@ -2,11 +2,13 @@ version: '2'
 
 services:
   factorio:
-    image: factorio
+    image: dentych/factorio:0.14.21
     volumes:
-      - saves:/opt/factorio/saves
-
+      - savegame:/opt/factorio/savefiles
+    ports:
+      - "34197/udp:34197/udp"
+    stdin_open: true
 
 volumes:
-  saves:
+  savegame:
     driver: local
