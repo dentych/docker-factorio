@@ -61,4 +61,4 @@ ENTRYPOINT ["/opt/factorio/bin/x64/factorio"]
 
 CMD ["--start-server", "savegame.zip"]
 
-EXPOSE ["34197/udp"]
+EXPOSE 34197/udp
