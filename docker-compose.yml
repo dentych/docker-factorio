@@ -1,0 +1,12 @@
+version: '2'
+
+services:
+  factorio:
+    image: factorio
+    volumes:
+      - saves:/opt/factorio/saves
+
+
+volumes:
+  saves:
+    driver: local
