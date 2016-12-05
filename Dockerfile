@@ -15,4 +15,4 @@ RUN apk --update --no-cache add ca-certificates openssl \
 	&& apk clean all
 
 WORKDIR /opt/factorio
-CMD /opt/factorio/bin/x64/factorio --start-server main
+CMD /opt/factorio/bin/x64/factorio --start-server savegame
