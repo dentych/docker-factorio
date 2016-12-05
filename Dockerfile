@@ -10,7 +10,7 @@ RUN apk --update --no-cache add ca-certificates openssl \
 	&& mkdir /opt \
 	&& wget https://www.factorio.com/get-download/0.14.21/headless/linux64 -O factorio.tar.gz \
 	&& tar -xvzf factorio.tar.gz -C /opt \
-	&& rm factorio.tar.gz \
+	&& rm factorio.tar.gz glibc-2.23-r3.apk glibc-bin-2.23-r3.apk \
 	&& apk del ca-certificates openssl
 
 WORKDIR /opt/factorio
