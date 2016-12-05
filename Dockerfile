@@ -1,7 +1,5 @@
 FROM alpine:3.4
 
-MAINTAINER dentych 
-
 ARG GLIBC_VERSION=2.23-r3
 
 RUN \
@@ -50,8 +48,17 @@ RUN \
                ca-certificates \
                openssl
 
-WORKDIR /opt/factorio
+RUN \
+   # Touch savegame \
+   mkdir -p /opt/factorio/saves
+
+
+WORKDIR /opt/factorio/saves
+
+VOLUME ["/opt/factorio/saves"]
 
 ENTRYPOINT ["/opt/factorio/bin/x64/factorio"]
 
-CMD ["--start-server", "savegame"]
+CMD ["--start-server", "savegame.zip"]
+
+EXPOSE ["34197/udp"]
