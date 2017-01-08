@@ -1,4 +1,4 @@
-VERSION  := $(shell cat VERSION)
+VERSION  := $(shell cat server/VERSION)
 VOLUME   := factorio_savegame
 
 VOLUME_EXISTS := $(shell docker volume ls | grep ${VOLUME})

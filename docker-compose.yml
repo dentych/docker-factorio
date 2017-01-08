@@ -10,6 +10,15 @@ services:
       - "34197/udp:34197/udp"
       - "27015/tcp:27015/tcp"
     stdin_open: true
+    environment:
+      GAME_PASSWORD: demo
+  web:
+    image: kalledk/nodejs-http-server
+    volumes:
+      - ./web/favicon.ico:/var/www/favicon.ico:ro
+      - ./mods:/var/www/mods:ro
+    ports:
+      - "8082:8080"
 
 volumes:
   factorio_savegame:

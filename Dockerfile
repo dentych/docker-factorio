@@ -59,7 +59,7 @@ WORKDIR /opt/factorio/saves
 EXPOSE "34197/udp"
 EXPOSE "27015/tcp"
 
-COPY entry.sh /bin/entry.sh
+COPY server/entry.sh /bin/entry.sh
 
 RUN chmod +x /bin/entry.sh
 
