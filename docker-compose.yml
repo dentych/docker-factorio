@@ -13,7 +13,7 @@ services:
     environment:
       GAME_PASSWORD: demo
   web:
-    image: kalledk/nodejs-http-server
+    image: kadock/nodejs-http-server
     volumes:
       - ./web/favicon.ico:/var/www/favicon.ico:ro
       - ./web/factorio.html:/var/www/factorio.html:ro
