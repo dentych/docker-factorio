@@ -4,23 +4,22 @@ Factorio docker image based on Alpine
 # Usage
 ## Building image
 ```
-$ docker build -t dentych/factorio:0.14.21
+$ make build
 ```
-or run the `build.sh` script.
 
-## Running container
+## Create volume (one time)
 ```
-$ docker run --name factorio -p 34197:34197/udp -v /srv/factorio/savegame:/opt/factorio/savegame dentych/factorio:0.14.21
+$ make volume
 ```
-or run the `run.sh` script. Takes one parameter, which is the host directory name of the savegame (OR a volume name).
 
-## Using docker-compose
+## Run the server
 ```
-# Create savegame
-docker-compose run factorio --create savegame
+$ make run
+```
 
-#Start server
-docker-compose up -d
+## Stop the server
+```
+$ make stop
 ```
 
 
