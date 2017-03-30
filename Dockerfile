@@ -29,7 +29,8 @@ RUN \
                ca-certificates \
                openssl
 
-ARG FACTORIO_VERSION=0.14.21
+ENV FACTORIO_VERSION=0.14.21 \
+    FACTORIO_SHA1=fc11c0d5b2671e0cf36db7907de6ff617525ede3
 
 RUN \
    # Install build dependencies \
@@ -41,24 +42,25 @@ RUN \
    && mkdir /opt \
    \
    # Install Factorio into opt \
-   && wget -qO- https://www.factorio.com/get-download/${FACTORIO_VERSION}/headless/linux64 | tar xvz -C /opt \
+   && wget -q -O /tmp/factorio.tar.gz https://www.factorio.com/get-download/${FACTORIO_VERSION}/headless/linux64 \
+   && echo "${FACTORIO_SHA1}  /tmp/factorio.tar.gz" | sha1sum -c \
+   && tar -xvz -C /opt -f /tmp/factorio.tar.gz \
+   && rm /tmp/factorio.tar.gz \
    \
    # Remove build dependencies \
    && apk --no-cache del \
                ca-certificates \
                openssl
 
-RUN \
-   # Touch savegame \
-   mkdir -p /opt/factorio/saves
-
+VOLUME ["/opt/factorio/saves", "/opt/factorio/mods"]
 
 WORKDIR /opt/factorio/saves
 
-VOLUME ["/opt/factorio/saves"]
+EXPOSE "34197/udp"
+EXPOSE "27015/tcp"
 
-ENTRYPOINT ["/opt/factorio/bin/x64/factorio"]
+COPY server/entry.sh /bin/entry.sh
 
-CMD ["--start-server", "savegame.zip"]
+RUN chmod +x /bin/entry.sh
 
-EXPOSE 34197/udp
+ENTRYPOINT ["/bin/entry.sh"]

@@ -4,11 +4,24 @@ services:
   factorio:
     image: dentych/factorio:0.14.21
     volumes:
-      - savegame:/opt/factorio/saves
+      - factorio_savegame:/opt/factorio/saves
+      - ./mods:/opt/factorio/mods:Z
     ports:
       - "34197/udp:34197/udp"
+      - "27015/tcp:27015/tcp"
     stdin_open: true
+    environment:
+      GAME_PASSWORD: demo
+  web:
+    image: kalledk/nodejs-http-server
+    volumes:
+      - ./web/favicon.ico:/var/www/favicon.ico:ro
+      - ./web/factorio.html:/var/www/factorio.html:ro
+      - ./web/mod_guide.html:/var/www/mod_guide.html:ro
+      - ./mods:/var/www/mods:ro
+    ports:
+      - "8082:8080"
 
 volumes:
-  savegame:
-    driver: local
+  factorio_savegame:
+    external: true
