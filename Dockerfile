@@ -1,6 +1,6 @@
-FROM alpine:3.4
+FROM alpine:3.6
 
-ARG GLIBC_VERSION=2.23-r3
+ARG GLIBC_VERSION=2.25-r0
 
 RUN \
    # Install build dependencies \
@@ -29,7 +29,7 @@ RUN \
                ca-certificates \
                openssl
 
-ARG FACTORIO_VERSION=0.14.21
+ARG FACTORIO_VERSION=0.15.33
 
 RUN \
    # Install build dependencies \
