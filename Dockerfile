@@ -36,6 +36,8 @@ RUN \
    apk --no-cache add \
                ca-certificates \
                openssl \
+               tar \
+               xz \
    \
    # Creating opt \
    && mkdir /opt \
@@ -46,7 +48,9 @@ RUN \
    # Remove build dependencies \
    && apk --no-cache del \
                ca-certificates \
-               openssl
+               openssl \
+               tar \
+               xz
 
 RUN \
    # Touch savegame \
