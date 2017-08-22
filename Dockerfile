@@ -43,7 +43,7 @@ RUN \
    && mkdir /opt \
    \
    # Install Factorio into opt \
-   && wget -qO- https://www.factorio.com/get-download/${FACTORIO_VERSION}/headless/linux64 | tar xvz -C /opt \
+   && wget -qO- https://www.factorio.com/get-download/${FACTORIO_VERSION}/headless/linux64 | tar xvJ -C /opt \
    \
    # Remove build dependencies \
    && apk --no-cache del \
