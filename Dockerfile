@@ -29,7 +29,7 @@ RUN \
                ca-certificates \
                openssl
 
-ARG FACTORIO_VERSION=0.15.33
+ARG FACTORIO_VERSION=0.15.34
 
 RUN \
    # Install build dependencies \
